@@ -7,7 +7,7 @@
  * Time: PM4:07
  */
 
-namespace PatPat\CloudMessage;
+namespace PatPatJoint\CloudMessage;
 
 use Illuminate\Support\Facades\Config;
 

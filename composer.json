@@ -14,7 +14,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "PatPat\\CloudMessage\\": "src/"
+            "PatPatJoint\\CloudMessage\\": "src/"
         }
     }
 }
