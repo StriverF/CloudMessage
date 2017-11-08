@@ -2,7 +2,7 @@
 
 /**
  * Created by PhpStorm.
- * User: patpat
+ * User: StriverF
  * Date: 2017/11/8
  * Time: PM4:07
  */
@@ -28,9 +28,9 @@ class CloudMessage
 
     public function __construct()
     {
-        $this->accountSid = Config::get('cloud_message.accountSid');
-        $this->authToken = Config::get('cloud_message.authToken');
-        $this->appId = Config::get('cloud_message.appId');
+        $this->accountSid = Config::get('cloud_message.account_sid');
+        $this->authToken = Config::get('cloud_message.auth_token');
+        $this->appId = Config::get('cloud_message.app_id');
     }
 
     protected function _getApiData($route, $method = 'GET', $sendData = array(), $authorization = null){
@@ -73,7 +73,15 @@ class CloudMessage
         return $response;
     }
 
-    public function sendVoiceNotify(){
+    /**
+     * @param $toNum   | 要通知的电话号码
+     * @param $content  | 通知内容
+     * @param int $playTimes  | 语音播报次数（默认3次）
+     * @param string $userData  | 自定义透传字段
+     * @param string $templateId  | 语音模板ID
+     * @return array|mixed
+     */
+    public function sendVoiceNotify($toNum, $content, $templateId = '708186', $playTimes = 3, $userData = 'patpat'){
         $returnData = array();
         $requestUrl = $this->version.self::ROUTE_ACCOUNT.$this->accountSid.'/'.self::ROUTE_CALLS.self::ROUTE_VOICE_NOTIFY;
         $timestamp = time();
@@ -83,14 +91,14 @@ class CloudMessage
         $requestUrl .= '?'.self::PARAM_SIG.'='.$sigParameter;
 
         $items['appId'] = $this->appId;
-        $items['to'] = '13560710913';
+        $items['to'] = $toNum;
         $items['type'] = '2';
-        $items['content'] = '服务器异常警报';
-        $items['toSerNum'] = '057112345678';
-        $items['playTimes'] = '3';
-        $items['userData'] = 'patpat';
+        $items['content'] = $content;
+        $items['toSerNum'] = Config::get('cloud_message.to_ser_num');
+        $items['playTimes'] = $playTimes;
+        $items['userData'] = $userData;
 //        $items['billUrl'] = '';
-        $items['templateId'] = '708186';  //语音模板ID
+        $items['templateId'] = $templateId;  //语音模板ID
         $sendData['voiceNotify'] = $items;
         $result = $this->_getApiData($requestUrl, 'POST', $sendData, $authorization);
 
