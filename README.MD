@@ -12,5 +12,6 @@
     
     
 使用
-     $cloudMessage = new CloudMessage();
-     $result = $cloudMessage->sendVoiceNotify();
+   
+    $cloudMessage = new CloudMessage();
+    $result = $cloudMessage->sendVoiceNotify();
