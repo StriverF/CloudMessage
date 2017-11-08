@@ -1,0 +1,14 @@
+{
+    "name": "patpat/cloud-message",
+    "description": "云之讯API",
+    "require": {
+        "gianarb/php-gcm": "^1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "patpat.striver.yin",
+            "email": "striverf.yin@patpat.com"
+        }
+    ]
+}
