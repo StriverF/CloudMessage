@@ -1,5 +1,5 @@
 {
-    "name": "patpatjoint/cloud-message",
+    "name": "patpat/cloud-message",
     "description": "云之讯API",
     "require": {
         "php": ">=5.5.9",
@@ -14,7 +14,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "PatPatJoint\\CloudMessage\\": "src/"
+            "PatPat\\CloudMessage\\": "src/"
         }
     }
 }
