@@ -1,10 +1,11 @@
 {
     "name": "patpat/cloud-message",
     "description": "云之讯API",
-    "require": {
-        "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
-    },
+    "keywords": [
+        "CloudMessage"
+    ],
+    "homepage": "https://www.patpat.com",
+    "type": "package",
     "license": "MIT",
     "authors": [
         {
@@ -12,6 +13,9 @@
             "email": "striverf.yin@patpat.com"
         }
     ],
+    "require": {
+        "php": ">=5.5.9"
+    },
     "autoload": {
         "psr-4": {
             "PatPat\\CloudMessage\\": "src/"
