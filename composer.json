@@ -2,7 +2,8 @@
     "name": "patpat/cloud-message",
     "description": "云之讯API",
     "require": {
-        "gianarb/php-gcm": "^1.0"
+        "php": ">=5.5.9",
+        "laravel/framework": "5.2.*"
     },
     "license": "MIT",
     "authors": [
@@ -10,5 +11,10 @@
             "name": "patpat.striver.yin",
             "email": "striverf.yin@patpat.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "PatPat\\CloudMessage\\": "src/"
+        }
+    }
 }
