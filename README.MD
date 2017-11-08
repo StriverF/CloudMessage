@@ -1,5 +1,5 @@
 
-.env 需要配置的参数
+.env 需要配置的参数,新增config文件 cloud_message.php 内容如下
  
     //注册云之讯官网，在控制台中即可获取此参数
     'account_sid' =>  env('CLOUD_MESSAGE_ACCOUNT_SID', ''),
