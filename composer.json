@@ -1,5 +1,5 @@
 {
-    "name": "patpat/cloud-message",
+    "name": "patpatjoint/cloud-message",
     "description": "云之讯API",
     "require": {
         "php": ">=5.5.9",
