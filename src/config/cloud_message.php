@@ -18,6 +18,6 @@ return [
     'app_id' =>  env('CLOUD_MESSAGE_APP_ID', ''),
 
     //来电显示的号码（需要去申请开通号码）
-    'to_ser_num' => env('TO_SER_NUM', '057112345678'),
+    'caller' => env('CLOUD_MESSAGE_CALLER', '057112345678'),
 
 ];

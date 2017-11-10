@@ -19,7 +19,7 @@ class CloudMessage
     const ROUTE_VOICE_NOTIFY        = 'voiceNotify'; //业务操作，业务功能的各类具体操作分支
     const PARAM_SIG                 = 'sig';  //签名验证
 
-    protected $version              = '2014-06-30/'; //云之讯API当前版本号
+    protected $version              = '2017-06-30/'; //云之讯API当前版本号
 
     protected $accountSid;
     protected $authToken;
@@ -77,31 +77,31 @@ class CloudMessage
      * @param $toNum   | 要通知的电话号码
      * @param $content  | 通知内容
      * @param int $playTimes  | 语音播报次数（默认3次）
-     * @param string $userData  | 自定义透传字段
+     * @param string $requestId  | 自定义透传字段
      * @param string $templateId  | 语音模板ID
      * @return array|mixed
      */
-    public function sendVoiceNotify($toNum, $content, $templateId = '708186', $playTimes = 3, $userData = 'patpat'){
+    public function sendVoiceNotify($toNum, $content, $playTimes = 3, $requestId = 'patpat', $templateId = '708186'){
         $returnData = array();
         $requestUrl = $this->version.self::ROUTE_ACCOUNT.$this->accountSid.'/'.self::ROUTE_CALLS.self::ROUTE_VOICE_NOTIFY;
-        $timestamp = time();
+        date_default_timezone_set('PRC');
+        $timestamp =  date('YmdHis');
         $sigParameter = md5($this->accountSid.$this->authToken.$timestamp);
         $authorizationBase64 = base64_encode($this->accountSid.':'.$timestamp);
         $authorization = 'Authorization: ' . $authorizationBase64;
         $requestUrl .= '?'.self::PARAM_SIG.'='.$sigParameter;
 
         $items['appId'] = $this->appId;
-        $items['to'] = $toNum;
-        $items['type'] = '2';
+        $items['callee'] = $toNum;
+        $items['type'] = '0';
         $items['content'] = $content;
-        $items['toSerNum'] = Config::get('cloud_message.to_ser_num');
+//        $items['caller'] = Config::get('cloud_message.caller');
         $items['playTimes'] = $playTimes;
-        $items['userData'] = $userData;
-//        $items['billUrl'] = '';
-        $items['templateId'] = $templateId;  //语音模板ID
+        $items['requestId'] = $requestId;
+//        $items['billUrl'] = ''; //话单推送url
+//        $items['templateId'] = $templateId;  //语音模板ID
         $sendData['voiceNotify'] = $items;
         $result = $this->_getApiData($requestUrl, 'POST', $sendData, $authorization);
-
         if ($result) {
             $returnData = json_decode($result, true);
         }

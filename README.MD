@@ -1,18 +1,21 @@
 
 .env 需要配置的参数,新增config文件 cloud_message.php 内容如下
  
-    //注册云之讯官网，在控制台中即可获取此参数
-    'account_sid' =>  env('CLOUD_MESSAGE_ACCOUNT_SID', ''),
+    return [
     
-    //账户授权令牌, 在控制台中即可获取此参数
-    'auth_token' =>  env('CLOUD_MESSAGE_AUTH_TOKEN', ''),
+        //注册云之讯官网，在控制台中即可获取此参数
+        'account_sid' =>  env('CLOUD_MESSAGE_ACCOUNT_SID', ''),
     
-    //应用id
-    'app_id' =>  env('CLOUD_MESSAGE_APP_ID', ''),
+        //账户授权令牌, 在控制台中即可获取此参数
+        'auth_token' =>  env('CLOUD_MESSAGE_AUTH_TOKEN', ''),
     
-    //来电显示的号码（需要去申请开通号码）
-    'to_ser_num' => env('TO_SER_NUM', '057112345678'),
+        //应用id
+        'app_id' =>  env('CLOUD_MESSAGE_APP_ID', ''),
     
+        //来电显示的号码（需要去申请开通号码）
+        'caller' => env('CLOUD_MESSAGE_CALLER', '057112345678'),
+    
+    ];
     
 使用
    
